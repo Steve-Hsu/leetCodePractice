@@ -56,3 +56,19 @@ const memoClimbStairs = (n, memo = []) => {
 console.log("N:", N, "Recursion with memo:", memoClimbStairs(N));
 
 
+// LeetCode solution3 : Dynamic Programming
+const dynamicClimbStair = (n) => {
+  let db = []
+  db[1] = 1;
+  db[2] = 2;
+  const climb_Stairs = (i, n) => {
+    // i defines the current step
+    // n defines the destination step.
+    if (n < 3) return db[n];
+    db[i] = db[i - 1] + db[i - 2];
+    if (i === n) return db[i];
+    return climb_Stairs(i + 1, n)
+  }
+  return climb_Stairs(3, n)
+}
+console.log("N:", N, "Dynamic programming:", dynamicClimbStair(N));
