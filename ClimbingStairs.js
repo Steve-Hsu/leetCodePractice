@@ -2,19 +2,30 @@
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function (n) {
-  // Check the root
-  // Get top of root
-  // n / 2
-};
+let N = 6
+// My solution 1: Number series pattern mactch
+// I observe the pattern of the result. 
+// * You can see, after (n) is greater than 4, the result is previous result  + previous of previous of result. 
+// * For example:
+// * (n) = 4, it’s is 3 + 2 = 5.
+// * (n) = 5, it’s is 3 + 5 = 8.  3 is result of(3), and 5 is result of(4)
+// * (n) = 6, it’s is 5 + 8 = 8.  5 is result of(4), and 8 is result of(5)
+const patternClimbStairs = (n) => {
+  if (n <= 3) return n;
+  let result = 0
+  let prev_1 = 3
+  let prev_2 = 2
+  const climb_Stairs = (i, n) => {
 
-let test = 3
-
-const addUpTo = (n) => {
-  return n * (n + 1) / 2
+    result = prev_1 + prev_2;
+    prev_2 = prev_1;
+    prev_1 = result;
+    if (i === n) return result;
+    return climb_Stairs(i + 1, n)
+  }
+  return climb_Stairs(4, n)
 }
-
-// console.log(addUpTo(test))
+console.log("N:", N, "Result:", patternClimbStairs(N));
 
 // Leetcode solution 1, Brute Force 
 const bruteForceClimbStairs = (n) => {
@@ -27,10 +38,7 @@ const bruteForceClimbStairs = (n) => {
   }
   return climb_Stairs(0, n)
 };
-
-
-// console.log("Brute force", bruteForceClimbStairs(N));
-let N = 5
+console.log("N:", N, "Brute force:", bruteForceClimbStairs(N));
 
 // LeetCode solution 2: Recursion with Memoization
 const memoClimbStairs = (n, memo = []) => {
@@ -45,4 +53,6 @@ const memoClimbStairs = (n, memo = []) => {
   }
   return climb_Stairs(0, n)
 }
-console.log("Recursion with memo", memoClimbStairs(N));
+console.log("N:", N, "Recursion with memo:", memoClimbStairs(N));
+
+
