@@ -2,7 +2,7 @@
  * @param {number} n
  * @return {number}
  */
-let N = 6
+let N = 1
 // My solution 1: Number series pattern mactch
 // I observe the pattern of the result. 
 // * You can see, after (n) is greater than 4, the result is previous result  + previous of previous of result. 
@@ -27,6 +27,7 @@ const patternClimbStairs = (n) => {
 }
 console.log("N:", N, "Result:", patternClimbStairs(N));
 
+
 // Leetcode solution 1, Brute Force 
 const bruteForceClimbStairs = (n) => {
   const climb_Stairs = (i, n) => {
@@ -39,6 +40,7 @@ const bruteForceClimbStairs = (n) => {
   return climb_Stairs(0, n)
 };
 console.log("N:", N, "Brute force:", bruteForceClimbStairs(N));
+
 
 // LeetCode solution 2: Recursion with Memoization
 const memoClimbStairs = (n, memo = []) => {
@@ -56,8 +58,8 @@ const memoClimbStairs = (n, memo = []) => {
 console.log("N:", N, "Recursion with memo:", memoClimbStairs(N));
 
 
-// LeetCode solution3 : Dynamic Programming
-const dynamicClimbStair = (n) => {
+// LeetCode solution : Dynamic Programming
+const dynamicClimbStairs = (n) => {
   let db = []
   db[1] = 1;
   db[2] = 2;
@@ -71,4 +73,13 @@ const dynamicClimbStair = (n) => {
   }
   return climb_Stairs(3, n)
 }
-console.log("N:", N, "Dynamic programming:", dynamicClimbStair(N));
+console.log("N:", N, "Dynamic programming:", dynamicClimbStairs(N));
+
+
+// LeetCode solution : Fibonacci Formula
+const FiboFormulaClimbStairs = (n) => {
+  const sqrt5 = Math.sqrt(5);
+  const fibn = Math.pow((1 + sqrt5) / 2, n + 1) - Math.pow((1 - sqrt5) / 2, n + 1);
+  return Math.floor(fibn / sqrt5);
+}
+console.log("N:", N, "Fibonacci formula:", FiboFormulaClimbStairs(N));
