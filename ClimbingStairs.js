@@ -2,7 +2,7 @@
  * @param {number} n
  * @return {number}
  */
-let N = 1
+let N = 6
 // My solution 1: Number series pattern mactch
 // I observe the pattern of the result. 
 // * You can see, after (n) is greater than 4, the result is previous result  + previous of previous of result. 
