@@ -19,7 +19,9 @@ function TreeNode(val, left, right) {
 
 
 // Create binary Tree
-const arr = [1, 2, 3, 4, null, 6, 7, 8, 9, 10, 11, 12, 13];
+// const arr = [1, 2, 3, 4, null, 6, 7, 8, 9, 10, 11, 12, 13];
+// const arr = [1, null, 2, 3]
+const arr = [1, 2, 3, 4, 5, 6]
 
 const makeTreeWithArray = (arr) => {
   let arrLength = arr.length;
@@ -52,15 +54,22 @@ const makeTreeWithArray = (arr) => {
 const root = makeTreeWithArray(arr);
 console.log(root)
 
-// var inorderTraversal = function (root) {
-//   let currentRoot = root
-//   let arr = []
-//   while (currentRoot) {
-//     if (currentRoot.val) arr.push(currentRoot.val)
-//     currentRoot.left ? currentRoot.left : currentRoot.right;
-//   }
-//   return arr
-// };
+// Recursive solution
+const recursiveBinaryTree = (root) => {
+  let res = [];
+  const helper = (root, res) => {
+    if (root != null) {
+      if (root.left != null) {
+        helper(root.left, res);
+      }
+      res.push(root.val);
+      if (root.right != null) {
+        helper(root.right, res);
+      }
+    }
+    return res
+  }
+  return helper(root, res)
+}
 
-// console.log(inorderTraversal(root))
-
+console.log("recursiveBinary", recursiveBinaryTree(root))
