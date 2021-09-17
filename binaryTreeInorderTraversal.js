@@ -74,10 +74,22 @@ const recursiveBinaryTree = (root) => {
 
 console.log("recursive - in-order:", recursiveBinaryTree(root));
 
+// Recursive solution_2 from Hong : https://leetcode.com/hon9g/
+const recursive2BinaryTree = (root) => {
+  if (!root) return [];
+  const res = [];
+  res.push(...recursive2BinaryTree(root.left));
+  res.push(root.val);
+  res.push(...recursive2BinaryTree(root.right));
+  return res;
+}
+
+console.log("recursive_2 - in-order:", recursiveBinaryTree(root));
+
 // Stack solution
 const stackBinaryTree = (root) => {
-  let stack = [];
-  let res = [];
+  const stack = [];
+  const res = [];
   let curr = root
   while (curr || stack.length) {
     while (curr) {
@@ -114,7 +126,7 @@ const iterationBinaryTree = (root) => {
 console.log("iteration  - in-order:", iterationBinaryTree(root));
 
 
-// Moriss solution
+// Moriss solution - Best solution
 const morrisBinaryTree = (root) => {
   let curr = root
   let pre;
