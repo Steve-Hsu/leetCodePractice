@@ -79,8 +79,8 @@ const stackBinaryTree = (root) => {
   let stack = [];
   let res = [];
   let curr = root
-  while (curr !== null || stack.length !== 0) {
-    while (curr !== null) {
+  while (curr || stack.length) {
+    while (curr) {
       stack.push(curr);
       curr = curr.left;
     }
@@ -93,6 +93,26 @@ const stackBinaryTree = (root) => {
 }
 
 console.log("stack  - in-order:", stackBinaryTree(root));
+
+// Iteration solution from Mike Lin :https://leetcode.com/linfongi/
+const iterationBinaryTree = (root) => {
+  const stack = [];
+  const res = [];
+  while (root || stack.length) {
+    if (root) {
+      stack.push(root);
+      root = root.left;
+    } else {
+      root = stack.pop();
+      res.push(root.val);
+      root = root.right;
+    }
+  }
+  return res
+}
+
+console.log("iteration  - in-order:", iterationBinaryTree(root));
+
 
 // Moriss solution
 const morrisBinaryTree = (root) => {
@@ -108,10 +128,11 @@ const morrisBinaryTree = (root) => {
       while (pre.right !== null) {
         pre = pre.right
       }
+
       pre.right = curr;
-      let temp = curr;
+      let temp = curr; // Target the current.
       curr = curr.left;
-      temp.left = null;
+      temp.left = null; // Remove the current, or say the left of the previous current, to prevent its as the sub node of preveious current in order to prevent duplicately loop through
     }
   }
   return res
