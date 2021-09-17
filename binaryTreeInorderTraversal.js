@@ -52,7 +52,7 @@ const makeTreeWithArray = (arr) => {
 }
 
 const root = makeTreeWithArray(arr);
-console.log(root)
+console.log("the binary tree : ", root)
 
 // Recursive solution
 const recursiveBinaryTree = (root) => {
@@ -72,4 +72,24 @@ const recursiveBinaryTree = (root) => {
   return helper(root, res)
 }
 
-console.log("recursiveBinary", recursiveBinaryTree(root))
+console.log("recursive - in-order:", recursiveBinaryTree(root));
+
+// Stack solution
+const stackBinaryTree = (root) => {
+  let stack = [];
+  let res = [];
+  let curr = root
+  while (curr !== null || stack.length !== 0) {
+    while (curr !== null) {
+      stack.push(curr);
+      curr = curr.left;
+    }
+    curr = stack.pop();
+    res.push(curr.val);
+    curr = curr.right;
+
+  }
+  return res
+}
+
+console.log("stack  - in-order:", stackBinaryTree(root));
