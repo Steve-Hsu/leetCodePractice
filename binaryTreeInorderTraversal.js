@@ -93,3 +93,28 @@ const stackBinaryTree = (root) => {
 }
 
 console.log("stack  - in-order:", stackBinaryTree(root));
+
+// Moriss solution
+const morrisBinaryTree = (root) => {
+  let curr = root
+  let pre;
+  let res = []
+  while (curr) {
+    if (!curr.left) {
+      res.push(curr.val);
+      curr = curr.right;
+    } else {
+      pre = curr.left;
+      while (pre.right !== null) {
+        pre = pre.right
+      }
+      pre.right = curr;
+      let temp = curr;
+      curr = curr.left;
+      temp.left = null;
+    }
+  }
+  return res
+}
+
+console.log("morris - in-order:", morrisBinaryTree(root));
