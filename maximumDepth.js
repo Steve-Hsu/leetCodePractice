@@ -29,8 +29,8 @@ const recursiveMaxDepth = (root) => {
   if (!root) {
     return 0;
   } else {
-    let = left_height = recursiveMaxDepth(root.left);
-    let = right_height = recursiveMaxDepth(root.right);
+    let left_height = recursiveMaxDepth(root.left);
+    let right_height = recursiveMaxDepth(root.right);
     return Math.max(left_height, right_height) + 1;
   }
 }
