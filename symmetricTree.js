@@ -13,8 +13,8 @@
 
 // Create binary Tree
 // const arr = [1, 2, 3, 4, null, 6, 7, 8, 9, 10, 11, 12, 13];
-// const arr = [1, 2, 2, 2, null, 2]
-const arr = [2, 3, 3, 4, 5, 5, 4]
+const arr = [1, 2, 2, 2, null, 2] // Expect false
+// const arr = [0, -1, -1, 3, 5, 5, 3, null, null, null] // Expect TRUE
 const makeTreeWithArray = require('./binaryTreeMaker');
 
 const root = makeTreeWithArray(arr);
