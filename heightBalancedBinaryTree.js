@@ -3,8 +3,9 @@
  * @return {TreeNode}
  */
 
-const arr =
-  [0, 1, 2, 3, 4, 5]
+// const arr = [7, 4, 5, 9, 11, 13]
+const arr = [13, 4, 5, 9, 11, 7]
+// const arr = [-10, -3, 0, 5, 9]
 var sortedArrayToBST = function (nums) {
   const sortedNums = nums.sort((a, b) => {
     if (a < b) return -1;
@@ -42,42 +43,46 @@ var sortedArrayToBST = function (nums) {
     count = count * 2
   }
   console.log("result", result)
+  const makeTreeWithArray = require('./binaryTreeMaker');
+
   return makeTreeWithArray(result)
 };
+console.log(sortedArrayToBST(arr))
 
+
+// Solutions ------------------------------------------------------------------------
 function TreeNode(val, left, right) {
   this.val = (val === undefined ? 0 : val)
   this.left = (left === undefined ? null : left)
   this.right = (right === undefined ? null : right)
 };
 
-const makeTreeWithArray = (arr) => {
-  let arrLength = arr.length;
-  let root = new TreeNode();
-  let nodes = [root];
-  let level = 0;
-  let currentRoot = nodes[level];
-  let leftIdx = -1
-  let rightIdx = 0
-  for (let i = 0; i <= arrLength - 1; i++) {
-    if (arr[i] === 0 || arr[i]) { // The 0 can be the value of the nodess
-      console.log("the i", i, "the value arr[i]", arr[i])
-      currentRoot = nodes[level];
-      leftIdx = leftIdx + 2
-      rightIdx = rightIdx + 2
-      currentRoot.val = arr[i];
-      if (arr[leftIdx] === 0 || arr[leftIdx]) {
-        currentRoot.left = new TreeNode(arr[leftIdx]);
-        nodes.push(currentRoot.left);
-      }
-      if (arr[rightIdx] === 0 || arr[rightIdx]) {
-        currentRoot.right = new TreeNode(arr[rightIdx]);
-        nodes.push(currentRoot.right);
-      }
-      level = level + 1;
-    }
-    if (i == arrLength - 1) return root
-  }
-};
+const nums = [7, 5, 9, 11, 4, 13]
 
-console.log(sortedArrayToBST(arr))
+// As the question required, the array must be sorted in ascending order in advance.
+nums.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+  return 0
+})
+
+// Solution Approach - 1
+const leftMiddleNodeAsTheRoot = (arr) => {
+  const helper = (left, right) => {
+    if (left > right) return null;
+
+    // always choose left middle node as a root
+    let p = Math.floor((left + right) / 2);
+
+    // preorder traversal" node -> left -> right
+    let root = new TreeNode(arr[p]);
+
+    root.left = helper(left, p - 1);
+    root.right = helper(p + 1, right);
+    return root
+  }
+  return helper(0, arr.length - 1)
+}
+
+console.log(
+  "left Middle Node", leftMiddleNodeAsTheRoot(nums))
