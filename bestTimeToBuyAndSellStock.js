@@ -1,27 +1,32 @@
-const prices = [12, 4, 5, 6, 9, 9]
+const prices = [1, 4, 5, 6, 9, 9]
 
 // My Solution - super slow.
 const maxProfit = (arr) => {
   const helper = (arr, profit) => {
     if (arr.length <= 1) return profit
     const MIN = Math.min(...arr);
-    console.log(MIN)
-    const minIdx = arr.indexOf(MIN)
-
-
+    const minIdx = arr.indexOf(MIN);
     const currArr = arr.splice(minIdx);
     const MAX = Math.max(...currArr);
-    console.log(MAX)
     if (profit < MAX - MIN) profit = MAX - MIN;
-
-    if (arr.length || arr) {
-
-      return helper(arr, profit)
-    } else {
-      return profit;
-    }
+    return helper(arr, profit)
   }
   return helper(arr, 0)
 }
 
 console.log(maxProfit(prices));
+
+// One Pass
+
+const onePass = (arr) => {
+  let minPrice = Math.max(...arr);
+  let maxProfit = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < minPrice) {
+      minPrice = arr[i];
+    } else if (arr[i] - minPrice > maxProfit) {
+      maxProfit = arr[i] - minPrice
+    }
+  }
+  return maxProfit;
+}
