@@ -30,3 +30,26 @@ const onePass = (arr) => {
   }
   return maxProfit;
 }
+
+// Other solution 
+// From pbriss  https://leetcode.com/pbriss/
+const maxProfit_1 = (arr) => {
+  var min = Number.MAX_SAFE_INTEGER;
+  var max = 0;
+  for (let i = 0; i < arr.length; i++) {
+    min = Math.min(min, prices[i]);
+    max = Math.max(max, prices[i] - min);
+  }
+  return max;
+}
+
+// Clean one pass
+// From https://leetcode.com/problems/best-time-to-buy-and-sell-stock/discuss/853090/JavaScript-Clean-One-Pass-Solution
+const onePass_2 = (arr) => {
+  let maxProf = 0, curr = arr[0];
+  for (let x of arr) {
+    if (curr < x) maxProf = Math.max(maxProf, x - curr);
+    else curr = x;
+  }
+  return maxProf;
+}
