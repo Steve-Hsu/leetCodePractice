@@ -5,8 +5,8 @@ function ListNode(val, next) {
 }
 
 module.exports = listNodeMaker = (arr) => {
-  const root = new ListNode();
-  let currNode = root
+  const head = new ListNode();
+  let currNode = head
   for (const i in arr) {
     currNode.val = arr[i];
     if (i != arr.length - 1) {
@@ -14,6 +14,6 @@ module.exports = listNodeMaker = (arr) => {
       currNode = currNode.next;
     }
   }
-  return root
+  return head
 }
 
