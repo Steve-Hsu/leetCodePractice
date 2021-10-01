@@ -49,9 +49,9 @@ const recursionInvertTree = (root) => {
 console.log("recursionInvertTree:", recursionInvertTree(bst));
 
 // From HongBo-Miao https://leetcode.com/problems/invert-binary-tree/discuss/399221/Clean-JavaScript-iterative-DFS-BFS-solutions
-const recursionInvertTree_2 = (root) => {
+const neatRecursionInvertBST = (root) => {
   if (root == null) return root;
-  [root.left, root.right] = [invertTree(root.right), invertTree(root.left)];
+  [root.left, root.right] = [neatRecursionInvertBST(root.right), neatRecursionInvertBST(root.left)];
   return root;
 }
 
