@@ -1,4 +1,4 @@
-const linkNodeMaker = require('./listNodeMaker');
+const linkNodeMaker = require('../listNodeMaker');
 const arr = [5, 4, 3, 2, 1]
 const nodes = linkNodeMaker(arr);
 

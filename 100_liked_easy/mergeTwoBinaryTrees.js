@@ -17,7 +17,7 @@ function TreeNode(val, left, right) {
   this.left = (left === undefined ? null : left)
   this.right = (right === undefined ? null : right)
 };
-const bstMaker = require('./binaryTreeMaker');
+const bstMaker = require('../binaryTreeMaker');
 
 const arr_1 = [1, 2]
 const arr_2 = [2, 4, 5, 1]

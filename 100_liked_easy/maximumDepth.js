@@ -1,4 +1,4 @@
-const makeTreeWithArray = require('./binaryTreeMaker');
+const makeTreeWithArray = require('../binaryTreeMaker');
 
 const arr = [3, 9, 20, null, null, 15, 7]
 // const arr = [1]
