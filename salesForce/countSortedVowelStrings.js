@@ -13,3 +13,10 @@ var countVowelStrings = function (n) {
 };
 
 console.log(countVowelStrings(2))
+
+// LeetCode solution 
+var countVowelStrings_1 = function (n) {
+  return (n + 4) * (n + 3) * (n + 2) * (n + 1) / 24;
+};
+
+console.log(countVowelStrings_1(2))
