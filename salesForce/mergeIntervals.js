@@ -8,7 +8,7 @@
 // const intervals = [[2, 3], [4, 5], [6, 7], [8, 9], [1, 10]];
 const intervals = [[1, 4], [0, 0]]
 
-// My solution 
+// My solutions
 var merge = function (intervals) {
 
   if (intervals.length === 1) return intervals
