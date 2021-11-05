@@ -4,7 +4,7 @@
  * @return {number}
  */
 
-
+// LeetCode solution - 100% faster
 var compareVersion = function (version1, version2) {
   let nums1 = version1.split(".");
   let nums2 = version2.split(".");
