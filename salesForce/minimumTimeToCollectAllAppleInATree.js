@@ -46,7 +46,8 @@ console.log(minTime(n, edges, hasApple))
 // From leonenko https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/discuss/623786/C%2B%2BCJavaJavascript-simple-map-solution-no-recursion-bottom-up
 var minTime_2 = function (n, edges, hasApple) {
   const m = {};
-  edges.sort((a, b) => a[0] - b[0]);
+  // After My test, we don't need this line to sort edges
+  // edges.sort((a, b) => a[0] - b[0]);
   for (let edge of edges)
     if (m[edge[1]] !== undefined)
       m[edge[0]] = edge[1];
