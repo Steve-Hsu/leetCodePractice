@@ -4,6 +4,7 @@
  * @return {number}
  */
 //https://www.nileshblog.tech/2022/07/leet-code-median-of-two-sorted-array-java-c-c-js-solution/
+// Best solution
 const findMedianSortedArrays = (nums1, nums2) => {
   // 1. Find the shorter array of the two lists and make it nums1
   // 2. Find a pivot point in nums1 (using binary search)
