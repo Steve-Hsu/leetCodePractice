@@ -4,6 +4,7 @@ function TreeNode(val, left, right) {
   this.right = (right === undefined ? null : right)
 };
 
+// this is actually a binary tree of "min heap"
 module.exports = makeTreeWithArray = (arr) => {
   let arrLength = arr.length;
   let root = new TreeNode();
