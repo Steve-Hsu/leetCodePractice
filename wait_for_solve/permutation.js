@@ -1,3 +1,5 @@
+
+// Medium
 /**
  * @param {number[]} nums
  * @return {number[][]}
@@ -37,15 +39,14 @@ var permute_fail = function (nums) {
 
 // LeetCode Solution 
 var permute = function (nums) {
+  // 
 
+  let arr = Array.from(nums)
 
-  //   function backtrack(first){
-  //     if (first === 0){
-  //       output.push()
-  //     }
-  //     for(let i = 0; )
-  //   }
-  // };
+  // reverse
+  let re_arr = Array.from(nums).reverse()
+
+  console.log(arr, re_arr)
 }
 let arr = [5, 4, 6, 2]
 
